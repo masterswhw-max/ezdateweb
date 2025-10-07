@@ -56,7 +56,7 @@ A complete dating platform with real-time messaging, profile matching, and beaut
 # Option 2: Manual Setup
 1. Clone Repository
    ```bash
-   git clone https://github.com/yourusername/ezdate.git
+   git clone https://github.com/yourusername/ezdateweb.git
    cd ezdate
    ```
 
