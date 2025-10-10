@@ -4,6 +4,7 @@ include 'db_connect.php';
 
 $message = '';
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
