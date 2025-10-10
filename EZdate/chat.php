@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['message'])) {
     $stmt->bind_param("iis", $user_id, $chat_user_id, $message);
     $stmt->execute();
 }
-
 // Get messages
 $stmt = $conn->prepare("SELECT m.*, u.name FROM messages m 
                        JOIN users u ON u.id = m.sender_id 

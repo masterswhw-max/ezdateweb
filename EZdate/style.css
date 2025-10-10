@@ -10,7 +10,6 @@ html {
     -ms-text-size-adjust: 100%;
 }
 
-/* Removed font smoothing that can cause Chrome glitching */
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -237,6 +236,73 @@ body::before {
 .radio-group input[type="radio"] {
     width: auto;
     margin-right: 0.5rem;
+}
+
+/* Filter Section */
+.filter-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 107, 107, 0.2);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(255, 107, 107, 0.1);
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.filter-group label {
+    color: #ff6b6b;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.filter-group input {
+    width: 80px;
+    padding: 8px 12px;
+    border: 2px solid rgba(255, 107, 107, 0.3);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    font-weight: 600;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.filter-group input:focus {
+    outline: none;
+    border-color: #ff6b6b;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+}
+
+.btn-filter {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.btn-filter:hover {
+    opacity: 0.9;
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
 }
 
 /* Swipe Interface */
@@ -661,9 +727,7 @@ body::before {
     position: relative;
 }
 
-.message {
-    /* Removed animation to prevent Chrome glitching */
-}
+
 
 /* Simplified animations for better performance */
 .message.new {
