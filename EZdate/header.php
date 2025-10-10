@@ -15,18 +15,12 @@
     document.addEventListener('mousemove', function(e) {
         const x = e.clientX / window.innerWidth * 100;
         const y = e.clientY / window.innerHeight * 100;
-        
-        const overlay = document.querySelector('body::before') || document.body;
-        document.body.style.setProperty('--mouse-x', x + '%');
-        document.body.style.setProperty('--mouse-y', y + '%');
-        
-        document.body.style.background = `
-            radial-gradient(circle at ${x}% ${y}%, 
-                rgba(255,107,107,0.08) 0%, 
-                rgba(238,90,111,0.04) 30%, 
-                rgba(214,51,132,0.02) 60%, 
-                transparent 100%
-            ), #f8f9fa`;
+        document.body.style.background = `radial-gradient(
+            circle at ${x}% ${y}%, 
+            rgba(255,107,107,0.2) 0%, 
+            rgba(239,45,74,0.1) 30%, 
+            transparent 70%
+        ), #f8f9fa`;
     });
     </script>
     <nav class="navbar navbar-expand-lg">
