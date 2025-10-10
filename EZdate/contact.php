@@ -5,10 +5,10 @@ include 'db_connect.php';
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = trim($_POST['name']);
-    $email = trim($_POST['email']);
-    $subject = trim($_POST['subject']);
-    $msg = trim($_POST['message']);
+    $name = trim($_POST['name'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $subject = trim($_POST['subject'] ?? '');
+    $msg = trim($_POST['message'] ?? '');
     
     if (strlen($name) < 2) {
         $message = '<div class="error">Name is required</div>';
@@ -24,9 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if ($stmt->execute()) {
             $message = '<div class="success">💕 Thank you for your message! We will get back to you soon. 💕</div>';
-            
-            // Optional: Send email notification (uncomment if needed)
-            // mail('admin@ezdate.com', 'New Contact Message: ' . $subject, $msg, 'From: ' . $email);
             
             // Clear form data after successful submission
             $name = $email = $subject = $msg = '';
