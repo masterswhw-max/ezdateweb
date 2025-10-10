@@ -98,24 +98,41 @@ $(document).ready(function() {
         }
     });
 
-    // AJAX search functionality
-    $('#searchForm').on('submit', function(e) {
+
+    // Discover page filtering
+    $('#filterForm').on('submit', function(e) {
         e.preventDefault();
-        
-        const formData = $(this).serialize();
+        loadFilteredProfiles();
+    });
+
+    function loadFilteredProfiles() {
+        const minAge = $('#min_age').val() || 18;
+        const maxAge = $('#max_age').val() || 50;
         
         $.ajax({
-            url: 'search_results.php',
+            url: 'filter_profiles.php',
             type: 'POST',
-            data: formData,
+            data: {
+                min_age: minAge,
+                max_age: maxAge
+            },
             success: function(response) {
-                $('#search-results').html(response);
+                $('.swipe-container').html(response);
             },
             error: function() {
-                $('#search-results').html('<p class="error">Error loading results. Please try again.</p>');
+                $('.swipe-container').html('<div class="error">Error loading profiles. Please try again.</div>');
             }
         });
-    });
+    }
+
+    // Auto-refresh discover page every 30 seconds
+    if (window.location.pathname.includes('swipe.php')) {
+        setInterval(function() {
+            if ($('.profile-card-swipe').length === 0) {
+                location.reload();
+            }
+        }, 30000);
+    }
 
     // Smooth animations
     $('.btn').hover(
