@@ -1,6 +1,4 @@
 <?php
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
 
 include 'header.php';
 include 'db_connect.php';
@@ -8,7 +6,6 @@ include 'db_connect.php';
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
-    
 }
 
 $message = '';
@@ -16,8 +13,6 @@ $user_id = $_SESSION['user_id'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['profile_picture'])) {
     $target_dir = "uploads/";
-    
-    // Debug info removed for clean interface
     
     // Create uploads directory if it doesn't exist
     if (!file_exists($target_dir)) {
