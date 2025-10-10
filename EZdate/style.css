@@ -1,719 +1,142 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Simplified cross-browser compatibility */
-html {
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-}
-
-/* Removed font smoothing that can cause Chrome glitching */
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: #f8f9fa;
-    position: relative;
-}
-
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(255,107,107,0.1), rgba(238,90,111,0.05), rgba(214,51,132,0.03));
-    pointer-events: none;
-    z-index: -1;
-    transition: all 0.3s ease;
-}
-
-.navbar {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #d63384 100%);
-    padding: 1rem 0;
-    box-shadow: 0 2px 15px rgba(255,107,107,0.3);
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
-}
-
-.logo {
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-menu a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-.nav-menu a:hover {
-    background: rgba(255,255,255,0.2);
-}
-
-.container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 2rem;
-    flex: 1;
-}
-
-.form-container {
-    background: rgba(255,255,255,0.95);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(255,107,107,0.1);
-    margin: 2rem 0;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: white;
-}
-
-.btn {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
-    color: white;
-    padding: 0.75rem 2rem;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(255,107,107,0.3);
-}
-
-.btn:hover {
-    /* Removed transform to prevent Chrome glitching */
-    opacity: 0.9;
-}
-
-.error {
-    color: #e74c3c;
-    font-size: 0.9rem;
-    margin-top: 0.25rem;
-}
-
-.success {
-    color: #27ae60;
-    font-size: 0.9rem;
-    margin-top: 0.25rem;
-}
-
-.profile-card {
-    background: rgba(255,255,255,0.9);
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(255,107,107,0.08);
-    margin: 1rem 0;
-    border-left: 3px solid rgba(255,107,107,0.3);
-    position: relative;
-    backdrop-filter: blur(5px);
-}
-
-.profile-card::before {
-    content: '💕';
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 1.2rem;
-    opacity: 0.15;
-}
-
-.footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: auto;
-}
-
-.hero {
-    text-align: center;
-    padding: 4rem 0;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #d63384 100%);
-    color: white;
-    margin-bottom: 2rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '💕';
-    position: absolute;
-    font-size: 3rem;
-    opacity: 0.1;
-    top: 20%;
-    left: 10%;
-    animation: float 6s ease-in-out infinite;
-}
-
-.hero::after {
-    content: '💖';
-    position: absolute;
-    font-size: 2rem;
-    opacity: 0.1;
-    top: 60%;
-    right: 15%;
-    animation: float 4s ease-in-out infinite reverse;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-#search-results {
-    margin-top: 2rem;
-}
-
-.radio-group {
-    display: flex;
-    gap: 1rem;
-    margin-top: 0.5rem;
-}
-
-.radio-group input[type="radio"] {
-    width: auto;
-    margin-right: 0.5rem;
-}
-
-/* Swipe Interface */
-.swipe-container {
-    max-width: 400px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.profile-card-swipe {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    overflow: hidden;
-    margin: 2rem 0;
-}
-
-.profile-image img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    /* Removed will-change and backface-visibility */
-}
-
-.profile-info {
-    padding: 1.5rem;
-}
-
-.swipe-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.btn-pass, .btn-like {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: transform 0.2s;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-pass {
-    background: #ff4458;
-    color: white;
-}
-
-.btn-like {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
-    color: white;
-    box-shadow: 0 4px 15px rgba(255,107,107,0.4);
-}
-
-.btn-pass:hover, .btn-like:hover {
-    /* Removed scale transform to prevent Chrome glitching */
-    opacity: 0.8;
-}
-
-/* Matches Grid */
-.matches-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-/* Fallback for older browsers */
-@supports not (display: grid) {
-    .matches-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+$(document).ready(function() {
+    // Form validation
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
     }
-    
-    .match-card {
-        width: calc(50% - 0.75rem);
-        margin-bottom: 1.5rem;
+
+    // Registration form validation
+    $('#registerForm').on('submit', function(e) {
+        let isValid = true;
+        $('.error').remove();
+
+        const name = $('#name').val().trim();
+        const email = $('#email').val().trim();
+        const password = $('#password').val();
+        const confirmPassword = $('#confirm_password').val();
+
+        if (name.length < 2) {
+            $('#name').after('<div class="error">Name must be at least 2 characters</div>');
+            isValid = false;
+        }
+
+        if (!validateEmail(email)) {
+            $('#email').after('<div class="error">Please enter a valid email</div>');
+            isValid = false;
+        }
+
+        if (password.length < 6) {
+            $('#password').after('<div class="error">Password must be at least 6 characters</div>');
+            isValid = false;
+        }
+
+        if (password !== confirmPassword) {
+            $('#confirm_password').after('<div class="error">Passwords do not match</div>');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            e.preventDefault();
+        }
+    });
+
+    // Login form validation
+    $('#loginForm').on('submit', function(e) {
+        let isValid = true;
+        $('.error').remove();
+
+        const email = $('#email').val().trim();
+        const password = $('#password').val();
+
+        if (!validateEmail(email)) {
+            $('#email').after('<div class="error">Please enter a valid email</div>');
+            isValid = false;
+        }
+
+        if (password.length === 0) {
+            $('#password').after('<div class="error">Password is required</div>');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            e.preventDefault();
+        }
+    });
+
+    // Contact form validation
+    $('#contactForm').on('submit', function(e) {
+        let isValid = true;
+        $('.error').remove();
+
+        const name = $('#name').val().trim();
+        const email = $('#email').val().trim();
+        const subject = $('#subject').val().trim();
+        const message = $('#message').val().trim();
+
+        if (name.length < 2) {
+            $('#name').after('<div class="error">Name is required</div>');
+            isValid = false;
+        }
+
+        if (!validateEmail(email)) {
+            $('#email').after('<div class="error">Please enter a valid email</div>');
+            isValid = false;
+        }
+
+        if (subject.length < 5) {
+            $('#subject').after('<div class="error">Subject must be at least 5 characters</div>');
+            isValid = false;
+        }
+
+        if (message.length < 10) {
+            $('#message').after('<div class="error">Message must be at least 10 characters</div>');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            e.preventDefault();
+        }
+    });
+
+
+    // Discover page filtering
+    $('#filterForm').on('submit', function(e) {
+        e.preventDefault();
+        loadFilteredProfiles();
+    });
+
+    function loadFilteredProfiles() {
+        const minAge = $('#min_age').val() || 18;
+        const maxAge = $('#max_age').val() || 50;
+        
+        $.ajax({
+            url: 'filter_profiles.php',
+            type: 'POST',
+            data: {
+                min_age: minAge,
+                max_age: maxAge
+            },
+            success: function(response) {
+                $('.swipe-container').html(response);
+            },
+            error: function() {
+                $('.swipe-container').html('<div class="error">Error loading profiles. Please try again.</div>');
+            }
+        });
     }
-}
 
-.match-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    padding: 1rem;
-    text-align: center;
-}
-
-.match-card img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-}
-
-/* Chat Interface */
-.chat-container {
-    max-width: 600px;
-    margin: 2rem auto;
-    background: rgba(255,255,255,0.95);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(255,107,107,0.15);
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-}
-
-.chat-header {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
-    color: white;
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    position: relative;
-}
-
-.chat-header::before {
-    content: '💕';
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    font-size: 1.5rem;
-    opacity: 0.3;
-}
-
-.chat-header img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.btn-back {
-    margin-left: auto;
-    background: rgba(255,255,255,0.2);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.btn-refresh {
-    background: rgba(255,255,255,0.2);
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 1rem;
-    font-size: 0.9rem;
-}
-
-.btn-refresh:hover {
-    background: rgba(255,255,255,0.3);
-}
-
-.messages-container {
-    height: 450px;
-    overflow-y: auto;
-    padding: 1.5rem;
-    background: linear-gradient(to bottom, rgba(255,107,107,0.02), rgba(238,90,111,0.01));
-    position: relative;
-}
-
-.messages-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 20px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.8), transparent);
-    pointer-events: none;
-}
-
-.messages-container::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 20px;
-    background: linear-gradient(to top, rgba(255,255,255,0.8), transparent);
-    pointer-events: none;
-}
-
-.message {
-    margin: 1rem 0;
-    max-width: 70%;
-}
-
-.message.sent {
-    margin-left: auto;
-    text-align: right;
-}
-
-.message.received {
-    margin-right: auto;
-}
-
-.message p {
-    background: rgba(233,236,239,0.8);
-    padding: 0.75rem 1rem;
-    border-radius: 18px;
-    margin: 0;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255,255,255,0.3);
-    position: relative;
-}
-
-.message.sent p {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
-    color: white;
-    box-shadow: 0 2px 10px rgba(255,107,107,0.3);
-}
-
-.message.received p::before {
-    content: '💖';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    font-size: 0.8rem;
-    opacity: 0.1;
-}
-
-.message.sent p::before {
-    content: '💕';
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    font-size: 0.8rem;
-    opacity: 0.2;
-}
-
-.message .time {
-    font-size: 0.8rem;
-    color: #6c757d;
-    margin-top: 0.25rem;
-    display: block;
-}
-
-.message-form {
-    display: flex;
-    padding: 1.5rem;
-    background: rgba(255,255,255,0.9);
-    border-top: 1px solid rgba(255,107,107,0.1);
-    backdrop-filter: blur(10px);
-    gap: 1rem;
-}
-
-.message-form::before {
-    content: '💘';
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2rem;
-    opacity: 0.2;
-    pointer-events: none;
-}
-
-.message-form input {
-    flex: 1;
-    border: 1px solid rgba(255,107,107,0.2);
-    border-radius: 25px;
-    padding: 0.75rem 1.5rem;
-    background: rgba(255,255,255,0.8);
-    backdrop-filter: blur(5px);
-    transition: all 0.3s ease;
-}
-
-.message-form input:focus {
-    outline: none;
-    border-color: #ff6b6b;
-    box-shadow: 0 0 0 3px rgba(255,107,107,0.1);
-    background: rgba(255,255,255,0.95);
-}
-
-.message-form input::placeholder {
-    color: rgba(255,107,107,0.5);
-}
-
-/* Profile Photo */
-.profile-preview {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 1rem 0;
-}
-
-.photo-section {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid #e9ecef;
-}
-
-.no-matches, .no-more-profiles {
-    text-align: center;
-    padding: 3rem 1rem;
-    color: #6c757d;
-}
-
-/* Profile View Page */
-.profile-view {
-    max-width: 500px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    overflow: hidden;
-}
-
-.profile-header {
-    text-align: center;
-    padding: 2rem;
-}
-
-.profile-header img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-}
-
-.profile-header h2 {
-    margin: 0.5rem 0;
-    color: #333;
-}
-
-.profile-header .gender {
-    color: #666;
-    font-size: 1.1rem;
-}
-
-.profile-bio {
-    padding: 0 2rem 1rem;
-}
-
-.profile-bio h3 {
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.profile-actions {
-    padding: 2rem;
-    text-align: center;
-    border-top: 1px solid #eee;
-}
-
-.profile-actions .btn {
-    margin: 0.5rem;
-}
-
-.btn-secondary {
-    background: #6c757d;
-    color: white;
-    padding: 0.75rem 2rem;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    margin: 0.5rem;
-}
-
-.btn-view-profile {
-    background: rgba(102, 126, 234, 0.1);
-    color: #667eea;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-}
-
-.liked-status {
-    color: #e74c3c;
-    font-weight: bold;
-    margin: 1rem 0;
-}
-
-.no-messages {
-    text-align: center;
-    padding: 3rem 2rem;
-    color: rgba(255,107,107,0.6);
-    font-style: italic;
-    position: relative;
-}
-
-.no-messages::before {
-    content: '💕💖💕';
-    display: block;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    opacity: 0.3;
-}
-
-.no-messages::after {
-    content: 'Start your love story...';
-    display: block;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    opacity: 0.7;
-}
-
-/* Message loading animation */
-.messages-container {
-    position: relative;
-}
-
-.message {
-    /* Removed animation to prevent Chrome glitching */
-}
-
-/* Simplified animations for better performance */
-.message.new {
-    animation: fadeIn 0.2s ease-in;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Improved message form */
-.message-form {
-    position: sticky;
-    bottom: 0;
-    background: white;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-}
-
-.message-form input:focus {
-    outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
-}
-
-/* Safari-specific fixes */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        -webkit-border-radius: 5px;
+    // Auto-refresh discover page every 30 seconds
+    if (window.location.pathname.includes('swipe.php')) {
+        setInterval(function() {
+            if ($('.profile-card-swipe').length === 0) {
+                location.reload();
+            }
+        }, 30000);
     }
-    
-    .btn {
-        -webkit-border-radius: 5px;
-    }
-    
-    .profile-image img {
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-    }
-}
 
-/* Chrome-specific fixes - Disable all transforms */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-    * {
-        transform: none !important;
-        -webkit-transform: none !important;
-        will-change: auto !important;
-        backface-visibility: visible !important;
-        -webkit-backface-visibility: visible !important;
-    }
-}
+    // Smooth animations
+    $('.btn').hover(
+        function() { $(this).css('transform', 'translateY(-2px)'); },
+        function() { $(this).css('transform', 'translateY(0)'); }
+    );
+});
