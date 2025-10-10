@@ -10,6 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 $message = '';
 $user_id = $_SESSION['user_id'];
 
+
 // Get current user data
 $stmt = $conn->prepare("SELECT name, email, gender, age, bio FROM users WHERE id = ?");
 $stmt->bind_param("i", $user_id);
