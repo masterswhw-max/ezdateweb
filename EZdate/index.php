@@ -18,6 +18,7 @@
         <p>EZDate is your premier destination for finding meaningful connections. Our platform makes it easy to discover compatible matches based on your preferences.</p>
         
         <h3>💖 Why Choose EZDate? 💖</h3>
+        
         <ul>
             <li>💕 Create your perfect love profile</li>
             <li>🔍 Find your soulmate with smart matching</li>

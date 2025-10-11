@@ -27,7 +27,7 @@ if ($action == 'like') {
     $result = $stmt->get_result();
     
     if ($result->num_rows > 0) {
-        // It's a match! Create match record
+        // It's a match! Create a match record
         $stmt = $conn->prepare("INSERT IGNORE INTO matches (user1_id, user2_id) VALUES (?, ?)");
         $user1 = min($user_id, $target_user_id);
         $user2 = max($user_id, $target_user_id);

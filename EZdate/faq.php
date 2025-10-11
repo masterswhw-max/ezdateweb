@@ -1,6 +1,7 @@
 <?php include 'header.php'; ?>
 
 <div class="container">
+    
     <div class="glass-container">
         <h1 class="text-center mb-4">❓ Frequently Asked Questions</h1>
         
